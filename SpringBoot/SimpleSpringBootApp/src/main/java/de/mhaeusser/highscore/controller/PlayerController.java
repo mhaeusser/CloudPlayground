@@ -28,4 +28,11 @@ public class PlayerController {
     }
     return "Deleted player with id " + playerId + ".";
   }
+
+  @DeleteMapping("/deleteAll")
+  @ResponseStatus(HttpStatus.OK)
+  public String deleteAll() {
+    Repository.getInstance().deleteAll();
+    return "Deleted all data.";
+  }
 }

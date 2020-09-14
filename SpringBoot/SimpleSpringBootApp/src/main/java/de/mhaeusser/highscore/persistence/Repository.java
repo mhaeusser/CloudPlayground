@@ -14,8 +14,7 @@ public class Repository {
 
   private static Repository _instance;
 
-  private Repository() {
-  }
+  private Repository() {}
 
   public static Repository getInstance() {
     if (_instance == null) {
@@ -50,5 +49,10 @@ public class Repository {
    */
   public boolean deletePlayer(long playerId) {
     return null != map.remove(playerId);
+  }
+
+  /** Deletes all data. */
+  public void deleteAll() {
+    map.clear();
   }
 }
