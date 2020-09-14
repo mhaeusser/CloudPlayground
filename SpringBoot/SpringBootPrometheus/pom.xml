@@ -17,6 +17,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
+    <properties>
+        <start-class>de.mhaeusser.highscore.SSBApplication</start-class>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -26,6 +30,10 @@
                     <source>8</source>
                     <target>8</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

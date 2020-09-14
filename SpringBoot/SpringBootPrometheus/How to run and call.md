@@ -1,20 +1,35 @@
+# SpringBootPrometheus 
+
+Simple Spring Boot (_SSB_) app to test Docker and Prometheus.
+
+### Starting the Server
+
+##### IntelliJ or so
+
+Run the SSBApplication class.
+
+##### Maven
+
+`mvn spring-boot:run`
+
+##### Docker
+
+```
+docker build -t prom .
+docker run --name prom-container2 -p 8080:8080 -d prom
+```
 
 
-### Start Server
 
-- run SpringBootPrometheusfrom IntelliJ
-or
-- `mvn spring-boot:run`
-
-
+### Endpoints
 
 #### Health
 
-localhost:8080/health
-
-
+http://localhost:8080/health
 
 #### Player
+
+See `curlRoundtrip.bat`.
 
 Delete all data: `curl -X DELETE "localhost:8080/deleteAll"`
 
