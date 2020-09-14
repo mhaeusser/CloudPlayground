@@ -1,4 +1,6 @@
 
+REM timeout 2 > NUL
+
 REM Delete all data
 curl -X DELETE "localhost:8080/deleteAll"
 
