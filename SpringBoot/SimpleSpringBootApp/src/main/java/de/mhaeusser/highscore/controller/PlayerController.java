@@ -28,7 +28,8 @@ public class PlayerController {
     String msg = "";
     switch (result) {
       case -2:
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No player with id " + playerId + ".");
+        throw new ResponseStatusException(
+            HttpStatus.NOT_FOUND, "No player with id " + playerId + ".");
       case -1:
         msg = String.format("%s is less than the high score.", score);
         break;
@@ -41,6 +42,12 @@ public class PlayerController {
     }
     Log.log(msg);
     return msg;
+  }
+
+  @GetMapping("/list")
+  @ResponseStatus(HttpStatus.OK)
+  public String getScores() {
+    return Repository.getInstance().getScores();
   }
 
   @DeleteMapping("/delete")

@@ -44,6 +44,13 @@ public class Repository {
   }
 
   /**
+   * @return String representation of score map
+   */
+  public String getScores() {
+    return map.toString();
+  }
+
+  /**
    * @param playerId
    * @return true if player was added, false is if was already used
    */

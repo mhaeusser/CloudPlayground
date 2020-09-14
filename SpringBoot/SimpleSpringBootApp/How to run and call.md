@@ -24,3 +24,5 @@ Delete a player: `curl -X DELETE "localhost:8080/delete?id=42"`
 
 Save a score: `curl -X PUT "localhost:8080/score?id=42&score=15"`
 
+List scores: `curl "localhost:8080/list"`
+
