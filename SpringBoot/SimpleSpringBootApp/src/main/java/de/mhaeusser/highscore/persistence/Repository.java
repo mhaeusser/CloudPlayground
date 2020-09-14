@@ -23,8 +23,24 @@ public class Repository {
     return _instance;
   }
 
-  public void storeScore(Long playerId, Integer score) {
-    // Log.log(String.format("Storing config for player %s: %s", playerId, config));
+  // -2: no player
+  // -1: less than high score
+  // 0: same as high score
+  // 1: new high score
+  public int saveScore(long playerId, int score) {
+    if (!map.containsKey(playerId)) {
+      return -2;
+    }
+    int oldScore = map.get(playerId);
+    if (score < oldScore) {
+      return -1;
+    }
+    if (score == oldScore) {
+      return 0;
+    }
+    // score > oldScore
+    map.put(playerId, score);
+    return 1;
   }
 
   /**
