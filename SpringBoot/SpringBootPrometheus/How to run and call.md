@@ -54,3 +54,14 @@ http://localhost:7070/actuator/info
 http://localhost:7070/actuator/health
 
 But not http://localhost:7070/actuator/prometheus (404)
+
+
+
+As described on https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints (2.2. Exposing Endpoints), all endpoints except for _info_  and _health_ must be explicitly exposed in the application.properties:
+
+```
+management.endpoints.web.exposure.include=health,info,prometheus,metrics
+```
+
+This exposes http://localhost:7070/actuator/metrics, but Prometheus looks for http://ex655:9090/metrics...
+
