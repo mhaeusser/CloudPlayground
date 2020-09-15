@@ -65,3 +65,11 @@ management.endpoints.web.exposure.include=health,info,prometheus,metrics
 
 This exposes http://localhost:7070/actuator/metrics, but Prometheus looks for http://ex655:9090/metrics...
 
+
+
+Prometheus not working after upgrading to Spring Boot Version 2: https://github.com/prometheus/client_java/issues/452
+
+	I can't generallly recommend micrometer, it does some things which don't make sense in Prometheus instrumentation terms. Generally I'm not a fan of instrumentation facades, they tend to lose you the benefits of the monitoring system you're using due to having to be be lowest-common-denominator, often encourage anti-patterns, are less performant, and have different resultant metrics depending on the output system.
+	
+	Micrometer is better than most, but I'd generally recommend using a Prometheus client directly and converting to other monitoring systems as needed by handling registry output. Prometheus clients are designed not to lock you in.
+
