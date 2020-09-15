@@ -16,7 +16,7 @@ Run the SSBApplication class.
 
 ```
 docker build -t prom .
-docker run --name prom-container2 -p 8080:8080 -d prom
+docker run --name prom-container2 -p 7070:8080 -d prom
 ```
 
 
@@ -41,3 +41,16 @@ Save a score: `curl -X PUT "localhost:8080/score?id=42&score=15"`
 
 List scores: `curl "localhost:8080/list"`
 
+
+
+### Prometheus
+
+After adding to pom.xml these artifactId's: spring-boot-starter-actuator, micrometer-core, micrometer-registry-prometheus:
+
+http://localhost:7070/actuator/
+
+http://localhost:7070/actuator/info
+
+http://localhost:7070/actuator/health
+
+But not http://localhost:7070/actuator/prometheus (404)
