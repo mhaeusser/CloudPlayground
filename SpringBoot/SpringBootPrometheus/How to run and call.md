@@ -71,7 +71,7 @@ As described on https://docs.spring.io/spring-boot/docs/current/reference/html/p
 management.endpoints.web.exposure.include=health,info,prometheus,metrics
 ```
 
-This exposes http://localhost:7070/actuator/metrics, but Prometheus looks for http://ex655:9090/metrics...
+This exposes http://localhost:7070/actuator/prometheus and http://localhost:7070/actuator/metrics.
 
 
 
