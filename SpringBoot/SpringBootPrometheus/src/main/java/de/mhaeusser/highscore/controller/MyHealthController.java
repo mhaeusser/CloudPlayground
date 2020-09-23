@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HealthController {
+public class MyHealthController {
 
-  @GetMapping("/health")
-  public String health() {
+  @GetMapping("/myhealth")
+  public String myhealth() {
     return "OK";
   }
 }

@@ -2,6 +2,8 @@
 
 Simple Spring Boot (_SSB_) app to test Docker and Prometheus.
 
+application.properties: `server.port=7070`
+
 ### Starting the Server
 
 ##### IntelliJ or so
@@ -16,7 +18,7 @@ Run the SSBApplication class.
 
 ```
 docker build -t prom .
-docker run --name prom-container2 -p 7070:8080 -d prom
+docker run --name prom-container2 -p 7070:7070 -d prom
 ```
 
 
@@ -25,27 +27,33 @@ docker run --name prom-container2 -p 7070:8080 -d prom
 
 #### Health
 
-http://localhost:8080/health
+http://localhost:7070/myhealth
 
 #### Player
 
 See `curlRoundtrip.bat`.
 
-Delete all data: `curl -X DELETE "localhost:8080/deleteAll"`
+Delete all data: `curl -X DELETE "localhost:7070/deleteAll"`
 
-Create a player: `curl -X PUT "localhost:8080/create?id=42"`
+Create a player: `curl -X PUT "localhost:7070/create?id=42"`
 
-Delete a player: `curl -X DELETE "localhost:8080/delete?id=42"`
+Delete a player: `curl -X DELETE "localhost:7070/delete?id=42"`
 
-Save a score: `curl -X PUT "localhost:8080/score?id=42&score=15"`
+Save a score: `curl -X PUT "localhost:7070/score?id=42&score=15"`
 
-List scores: `curl "localhost:8080/list"`
+List scores: `curl "localhost:7070/list"`
 
 
 
 ### Prometheus
 
-After adding to pom.xml these artifactId's: spring-boot-starter-actuator, micrometer-core, micrometer-registry-prometheus:
+After adding to pom.xml these artifactIds:
+
+```
+spring-boot-starter-actuator, micrometer-core, micrometer-registry-prometheus
+```
+
+you get data from these endpoints:
 
 http://localhost:7070/actuator/
 
@@ -57,7 +65,7 @@ But not http://localhost:7070/actuator/prometheus (404)
 
 
 
-As described on https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints (2.2. Exposing Endpoints), all endpoints except for _info_  and _health_ must be explicitly exposed in the application.properties:
+As described on https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints (2.2. Exposing Endpoints), all endpoints except for _info_ and _health_ must be explicitly exposed in the application.properties:
 
 ```
 management.endpoints.web.exposure.include=health,info,prometheus,metrics
